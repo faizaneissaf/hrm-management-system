@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiitHrmDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="att_id" />
+    </Key>
+    <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="checkin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="checkout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Committe">
+    <Key>
+      <PropertyRef Name="comm_id" />
+    </Key>
+    <Property Name="comm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comm_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comm_head" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CommitteMember">
+    <Key>
+      <PropertyRef Name="comm_m_id" />
+    </Key>
+    <Property Name="comm_m_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comm_id" Type="Int32" />
+    <Property Name="u_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="edu_id" />
+    </Key>
+    <Property Name="edu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="institute" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="board" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="has_added_edu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Experience">
+    <Key>
+      <PropertyRef Name="exp_id" />
+    </Key>
+    <Property Name="exp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="current_work" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="other_skills" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="has_exp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_date_to_apply" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="vaccencies" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="JobApplication">
+    <Key>
+      <PropertyRef Name="jobapp_id" />
+    </Key>
+    <Property Name="jobapp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_id" Type="Int32" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="short_list" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="doc_path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="JobApplicationsCommitte">
+    <Key>
+      <PropertyRef Name="job_app_cmt_id" />
+    </Key>
+    <Property Name="job_app_cmt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jobapp_id" Type="Int32" />
+    <Property Name="comm_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LeaveApplication">
+    <Key>
+      <PropertyRef Name="leaveapp_id" />
+    </Key>
+    <Property Name="leaveapp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="leave_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RemarksFromCommittie">
+    <Key>
+      <PropertyRef Name="remarks_id" />
+    </Key>
+    <Property Name="remarks_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_mem_id" Type="Int32" />
+    <Property Name="remarks" Type="Int32" />
+    <Property Name="jobapp_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Shortlist">
+    <Key>
+      <PropertyRef Name="shortlist_id" />
+    </Key>
+    <Property Name="shortlist_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jobapp_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contact_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cnic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="BiitHrmDBEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+    <EntitySet Name="Committes" EntityType="Self.Committe" />
+    <EntitySet Name="CommitteMembers" EntityType="Self.CommitteMember" />
+    <EntitySet Name="Educations" EntityType="Self.Education" />
+    <EntitySet Name="Experiences" EntityType="Self.Experience" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="JobApplications" EntityType="Self.JobApplication" />
+    <EntitySet Name="JobApplicationsCommittes" EntityType="Self.JobApplicationsCommitte" />
+    <EntitySet Name="LeaveApplications" EntityType="Self.LeaveApplication" />
+    <EntitySet Name="RemarksFromCommitties" EntityType="Self.RemarksFromCommittie" />
+    <EntitySet Name="Shortlists" EntityType="Self.Shortlist" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>

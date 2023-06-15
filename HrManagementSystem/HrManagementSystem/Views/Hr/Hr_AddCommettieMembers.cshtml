@@ -1,0 +1,32 @@
+﻿@model List<HrManagementSystem.Models.User>
+@{
+    ViewBag.Title = "Hr_CommettieMembers";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+    <br />
+
+    <br />
+    <br />
+    <table class="table">
+        <tbody>
+            @foreach (var usr in Model)
+            {
+                <tr class="table-primary">
+                    <td>
+                        <img src="~/Profiles/@usr.image"
+                             style="width: 45px; height: 45px"
+                             class="rounded-circle" />
+                    </td>
+                    <td>@usr.f_name&nbsp;@usr.l_name</td>
+                    <td>@usr.contact_no</td>
+                    <td>
+                        <a href="@Url.Action("Hr_AddMembers","Hr", new { m_id = usr.u_id })" class="btn btn-info">Add</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

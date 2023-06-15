@@ -1,0 +1,52 @@
+﻿@model List<HrManagementSystem.Models.Job>
+
+
+@{
+    ViewBag.Title = "Hr_JobApplications";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+    <br />
+    @using (Html.BeginForm("Hr_JobApplications", "Hr", FormMethod.Get))
+    {
+        <div class="input-group">
+            @Html.TextBox("s_app", null, new { @class = "form-control", @col = "8" })
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    }
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Title</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Experience</th>
+                <th scope="col">Last Date</th>
+                <th scope="col">Location</th>
+                <th scope="col">Total Vaccancies</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var job in Model)
+            {
+                <tr class="table-info">
+                    <td>@job.title</td>
+                    <td>@job.qualification</td>
+                    <td>@job.salary</td>
+                    <td>@job.experience</td>
+                    <td>@job.last_date_to_apply</td>
+                    <td>@job.location</td>
+                    <td>@job.vaccencies</td>
+                    <td>
+                        <a href="@Url.Action("Hr_JobApplicants","Hr", new { id = job.job_id })" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+

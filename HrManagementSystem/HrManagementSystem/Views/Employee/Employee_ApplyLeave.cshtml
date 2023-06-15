@@ -1,0 +1,62 @@
+﻿@model HrManagementSystem.Models.LeaveApplication
+@{
+    ViewBag.Title = "Employee_ApplyLeave";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <center>
+                                @using (Html.BeginForm("Employee_ApplyLeave", "Employee", FormMethod.Post))
+                                {
+
+
+                                    <h3 class="mb-5">Add Education</h3>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Leave Type</label>
+                                        @Html.DropDownListFor(model => model.leave_type, new SelectList(new[]
+ {
+     new { Value = "Sick", Text = "Sick" },
+     new { Value = "Earned", Text = "Earned" },
+     new { Value = "Casual", Text = "Casual" },
+     new { Value = "Annual", Text = "Annual" }
+ }, "Value", "Text"), new { @class = "form-control form-control-lg" })
+
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Start Date</label>
+                                        @Html.EditorFor(model => model.start_date,"date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">End Date</label>
+                                        @Html.EditorFor(model => model.end_date,"date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Reason</label>
+                                        @Html.TextAreaFor(model => model.reason, new { @class = "form-control form-control-lg", rows = 3 })
+                                    </div>
+
+
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Request</button>
+
+
+                                    <hr class="my-4">
+                                }
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

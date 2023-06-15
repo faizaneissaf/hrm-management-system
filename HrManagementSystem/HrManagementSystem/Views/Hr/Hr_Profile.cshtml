@@ -1,0 +1,98 @@
+﻿@model HrManagementSystem.Models.User
+@{
+    ViewBag.Title = "Hr_Profile";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <center>
+                                @using (Html.BeginForm("Hr_Profile", "Hr", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+
+                                    <h3 class="mb-5">Personal Info</h3>
+                                    <img class="rounded-circle" src="~/Profiles/@Model.image" width="200px" height="200px" />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <div class="form-outline mb-4" hidden>
+                                        @Html.HiddenFor(model => model.u_id, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Change Image</label>
+                                        <input type="file" class="form-control form-control-lg" id="file" name="file" />
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">First Name</label>
+                                        @Html.EditorFor(model => model.f_name, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Last Name</label>
+                                        @Html.EditorFor(model => model.l_name, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Email</label>
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Contact No</label>
+                                        @Html.EditorFor(model => model.contact_no, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">CNIC</label>
+                                        @Html.EditorFor(model => model.cnic, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">DOB</label>
+                                        @Html.EditorFor(model => model.dob, "date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @*<input type="date" class="form-control form-control-lg" asp-for="dob" />*@
+                                    </div>
+                                    <div class="form-outline mb-4" hidden>
+                                        <label class="form-label" for="">Gender</label>
+                                        @*<select class="select form-control form-control-lg" asp-for="gender">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>*@
+                                        @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Address</label>
+                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4" hidden>
+                                        <label class="form-label" for="">Role</label>
+                                        @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4" hidden>
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Update</button>
+
+                                    <hr class="my-4">
+                                }
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+

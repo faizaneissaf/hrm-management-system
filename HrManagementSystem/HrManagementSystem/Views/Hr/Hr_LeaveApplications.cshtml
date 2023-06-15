@@ -1,0 +1,40 @@
+﻿@model List<HrManagementSystem.Models.LeaveApplication>
+@{
+    ViewBag.Title = "Hr_LeaveApplications";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">User ID</th>
+                <th scope="col">Leave Type</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var la in Model)
+            {
+                
+                <tr class="table-primary">
+                    <td>@la.u_id</td>
+                    <td>@la.leave_type</td>
+                    <td>@la.start_date</td>
+                    <td>@la.end_date</td>
+                    <td>
+                        <a href="@Url.Action("Hr_laApproved","Hr", new { id = la.leaveapp_id })" class="btn btn-success">Approve</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Hr_laRejected","Hr", new { id = la.leaveapp_id })" class="btn btn-danger">Reject</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

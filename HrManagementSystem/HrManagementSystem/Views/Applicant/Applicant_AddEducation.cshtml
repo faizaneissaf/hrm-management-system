@@ -1,0 +1,66 @@
+﻿@model HrManagementSystem.Models.Education
+
+@{
+    ViewBag.Title = "Applicant_AddEducation";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <center>
+                                @using (Html.BeginForm("Applicant_AddEducation", "Applicant", FormMethod.Post))
+                                {
+
+
+                                    <h3 class="mb-5">Add Education</h3>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Degree</label>
+                                        @Html.DropDownListFor(model => model.degree, new SelectList(new[]
+{
+ new { Value = "Matric", Text = "Matric" },
+ new { Value = "Inter", Text = "Inter" },
+ new { Value = "Bachelor", Text = "Bachelor" },
+ new { Value = "Master", Text = "Master" }
+}, "Value", "Text"), new { @class = "form-control form-control-lg" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Institute</label>
+                                        @Html.EditorFor(model => model.institute, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Board</label>
+                                        @Html.EditorFor(model => model.board, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Start Date</label>
+                                        @Html.EditorFor(model => model.start_date,"date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">End Date</label>
+                                        @Html.EditorFor(model => model.end_date, "date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Save</button>
+
+
+                                    <hr class="my-4">
+                                }
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

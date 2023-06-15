@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Hod_committieRemarks";
+    Layout = "~/Views/Shared/_LayoutHod.cshtml";
+}
+@{
+    var jobapp_info = (List<HrManagementSystem.Models.JobApplication>)ViewData["jobapp_info"]; // Cast the list
+}
+@{
+    var remarks_info = (List<HrManagementSystem.Models.RemarksFromCommittie>)ViewData["remarks_info"]; // Cast the list
+}
+
+<div class="card shadow-2-strong " style="border-radius: 1rem;">
+    <div class="card-body text-center">
+        @foreach (var item in jobapp_info)
+        {
+            <br />
+            <h4>Info</h4>
+            <h6>Title: @item.title</h6>
+            <br />
+            <h6>Name: @item.name</h6>
+            <br />
+        }
+        <table class="table">
+            <tbody>
+                <h4>Remarks From Committie</h4>
+                @foreach (var item in remarks_info)
+                {
+                    HrManagementSystem.Models.BiitHrmDBEntities4 db = new HrManagementSystem.Models.BiitHrmDBEntities4();
+                    var name = db.Users.FirstOrDefault(x => x.u_id == item.c_mem_id);
+                    <tr class="table-info">
+                        <td>@name.f_name @name.l_name</td>
+                        <td>@item.remarks</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button class="btn btn-info">@Html.ActionLink("Hire", "Hod_Hire")</button>
+        <button class="btn btn-danger">@Html.ActionLink("Reject", "Hod_Reject")</button>
+    </div>
+</div>
+

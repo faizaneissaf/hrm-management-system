@@ -1,0 +1,38 @@
+﻿@model List<HrManagementSystem.Models.JobApplication>
+@{
+    ViewBag.Title = "Applicant_JobApplications";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+<body>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Title</th>
+                @*<th scope="col">Location</th>
+                <th scope="col">Salary</th>*@
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aj in Model)
+            {
+                <tr class="table-info">
+                    <td>@aj.title</td>
+                    @*<td>@aj.location</td>
+                    <td>@aj.salary</td>*@
+                    @if (aj.status == "pending")
+                    {
+                        <td class="bg-warning">@aj.status</td>
+                    }else
+                    {
+                        <td class="bg-success">@aj.status</td>    
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

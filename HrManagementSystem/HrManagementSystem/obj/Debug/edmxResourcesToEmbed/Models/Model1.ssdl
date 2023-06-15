@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiitHrmDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="att_id" />
+    </Key>
+    <Property Name="att_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="checkin" Type="varchar" MaxLength="50" />
+    <Property Name="checkout" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Committe">
+    <Key>
+      <PropertyRef Name="comm_id" />
+    </Key>
+    <Property Name="comm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comm_title" Type="varchar" MaxLength="50" />
+    <Property Name="comm_head" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CommitteMembers">
+    <Key>
+      <PropertyRef Name="comm_m_id" />
+    </Key>
+    <Property Name="comm_m_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comm_id" Type="int" />
+    <Property Name="u_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="edu_id" />
+    </Key>
+    <Property Name="edu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="degree" Type="varchar" MaxLength="50" />
+    <Property Name="institute" Type="varchar" MaxLength="50" />
+    <Property Name="board" Type="varchar" MaxLength="50" />
+    <Property Name="start_date" Type="varchar" MaxLength="50" />
+    <Property Name="end_date" Type="varchar" MaxLength="50" />
+    <Property Name="has_added_edu" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Experience">
+    <Key>
+      <PropertyRef Name="exp_id" />
+    </Key>
+    <Property Name="exp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="company" Type="varchar" MaxLength="50" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="start_date" Type="varchar" MaxLength="50" />
+    <Property Name="current_work" Type="varchar" MaxLength="50" />
+    <Property Name="end_date" Type="varchar" MaxLength="50" />
+    <Property Name="other_skills" Type="varchar" MaxLength="50" />
+    <Property Name="has_exp" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="qualification" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="varchar" MaxLength="50" />
+    <Property Name="experience" Type="varchar" MaxLength="50" />
+    <Property Name="last_date_to_apply" Type="varchar" MaxLength="50" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="vaccencies" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JobApplication">
+    <Key>
+      <PropertyRef Name="jobapp_id" />
+    </Key>
+    <Property Name="jobapp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_id" Type="int" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="short_list" Type="varchar" MaxLength="50" />
+    <Property Name="doc_path" Type="varchar" MaxLength="50" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JobApplicationsCommitte">
+    <Key>
+      <PropertyRef Name="job_app_cmt_id" />
+    </Key>
+    <Property Name="job_app_cmt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jobapp_id" Type="int" />
+    <Property Name="comm_id" Type="int" />
+  </EntityType>
+  <EntityType Name="LeaveApplication">
+    <Key>
+      <PropertyRef Name="leaveapp_id" />
+    </Key>
+    <Property Name="leaveapp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="leave_type" Type="varchar" MaxLength="50" />
+    <Property Name="start_date" Type="varchar" MaxLength="50" />
+    <Property Name="end_date" Type="varchar" MaxLength="50" />
+    <Property Name="reason" Type="varchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RemarksFromCommittie">
+    <Key>
+      <PropertyRef Name="remarks_id" />
+    </Key>
+    <Property Name="remarks_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_mem_id" Type="int" />
+    <Property Name="remarks" Type="int" />
+    <Property Name="jobapp_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Shortlist">
+    <Key>
+      <PropertyRef Name="shortlist_id" />
+    </Key>
+    <Property Name="shortlist_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jobapp_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="f_name" Type="varchar" MaxLength="50" />
+    <Property Name="l_name" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="contact_no" Type="varchar" MaxLength="50" />
+    <Property Name="cnic" Type="varchar" MaxLength="50" />
+    <Property Name="dob" Type="varchar" MaxLength="50" />
+    <Property Name="gender" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="role" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="BiitHrmDBModelStoreContainer">
+    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Committe" EntityType="Self.Committe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommitteMembers" EntityType="Self.CommitteMembers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Experience" EntityType="Self.Experience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobApplication" EntityType="Self.JobApplication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobApplicationsCommitte" EntityType="Self.JobApplicationsCommitte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveApplication" EntityType="Self.LeaveApplication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemarksFromCommittie" EntityType="Self.RemarksFromCommittie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shortlist" EntityType="Self.Shortlist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

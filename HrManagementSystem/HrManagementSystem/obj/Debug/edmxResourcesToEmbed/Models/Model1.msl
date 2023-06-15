@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BiitHrmDBModelStoreContainer" CdmEntityContainer="BiitHrmDBEntities4">
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Attendance">
+        <MappingFragment StoreEntitySet="Attendance">
+          <ScalarProperty Name="att_id" ColumnName="att_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="checkin" ColumnName="checkin" />
+          <ScalarProperty Name="checkout" ColumnName="checkout" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Committes">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Committe">
+        <MappingFragment StoreEntitySet="Committe">
+          <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+          <ScalarProperty Name="comm_title" ColumnName="comm_title" />
+          <ScalarProperty Name="comm_head" ColumnName="comm_head" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommitteMembers">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.CommitteMember">
+        <MappingFragment StoreEntitySet="CommitteMembers">
+          <ScalarProperty Name="comm_m_id" ColumnName="comm_m_id" />
+          <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Educations">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Education">
+        <MappingFragment StoreEntitySet="Education">
+          <ScalarProperty Name="edu_id" ColumnName="edu_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="institute" ColumnName="institute" />
+          <ScalarProperty Name="board" ColumnName="board" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="has_added_edu" ColumnName="has_added_edu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Experiences">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Experience">
+        <MappingFragment StoreEntitySet="Experience">
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="current_work" ColumnName="current_work" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="other_skills" ColumnName="other_skills" />
+          <ScalarProperty Name="has_exp" ColumnName="has_exp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="last_date_to_apply" ColumnName="last_date_to_apply" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="vaccencies" ColumnName="vaccencies" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobApplications">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.JobApplication">
+        <MappingFragment StoreEntitySet="JobApplication">
+          <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="short_list" ColumnName="short_list" />
+          <ScalarProperty Name="doc_path" ColumnName="doc_path" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobApplicationsCommittes">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.JobApplicationsCommitte">
+        <MappingFragment StoreEntitySet="JobApplicationsCommitte">
+          <ScalarProperty Name="job_app_cmt_id" ColumnName="job_app_cmt_id" />
+          <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+          <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveApplications">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.LeaveApplication">
+        <MappingFragment StoreEntitySet="LeaveApplication">
+          <ScalarProperty Name="leaveapp_id" ColumnName="leaveapp_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="leave_type" ColumnName="leave_type" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RemarksFromCommitties">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.RemarksFromCommittie">
+        <MappingFragment StoreEntitySet="RemarksFromCommittie">
+          <ScalarProperty Name="remarks_id" ColumnName="remarks_id" />
+          <ScalarProperty Name="c_mem_id" ColumnName="c_mem_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shortlists">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.Shortlist">
+        <MappingFragment StoreEntitySet="Shortlist">
+          <ScalarProperty Name="shortlist_id" ColumnName="shortlist_id" />
+          <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BiitHrmDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contact_no" ColumnName="contact_no" />
+          <ScalarProperty Name="cnic" ColumnName="cnic" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

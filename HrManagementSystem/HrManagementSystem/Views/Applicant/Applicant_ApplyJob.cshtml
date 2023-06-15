@@ -1,0 +1,38 @@
+﻿@model HrManagementSystem.Models.JobApplication
+@{
+    ViewBag.Title = "Applicant_ApplyJob";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            @using (Html.BeginForm("Applicant_ApplyJob", "Applicant", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <center>
+
+                                    <h3 class="mb-5">Upload Your CV</h3>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Choose File</label>
+                                        <input type="file" class="form-control form-control-lg" id="file" name="file" />
+                                    </div>
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Done</button>
+
+                                    <hr class="my-4">
+                                </center>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

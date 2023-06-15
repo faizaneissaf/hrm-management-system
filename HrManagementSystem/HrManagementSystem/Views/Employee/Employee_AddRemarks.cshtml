@@ -1,0 +1,86 @@
+﻿@model HrManagementSystem.Models.RemarksFromCommittie
+@{
+    ViewBag.Title = "Employee_AddRemarks";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+@{
+    var user_d = (List<HrManagementSystem.Models.User>)ViewData["user_pInfo"]; // Cast the list
+}
+@{
+    var user_edu = (List<HrManagementSystem.Models.Education>)ViewData["user_edu"]; // Cast the list
+}
+@{
+    var user_exp = (List<HrManagementSystem.Models.Experience>)ViewData["user_exp"]; // Cast the list
+}
+@{
+    var job_row = (List<HrManagementSystem.Models.JobApplication>)ViewData["job_row"]; // Cast the list
+}
+
+<div class="card shadow-2-strong " style="border-radius: 1rem;">
+    <div class="card-body text-center">
+        @foreach (var item in user_d)
+        {
+            <img class="rounded-circle" src="~/Profiles/@item.image" width="200px" height="200px" />
+            <br />
+            <h4>Personal Information</h4>
+            <h6>Name: @item.f_name @item.l_name</h6>
+            <br />
+            <h6>Email: @item.email</h6>
+            <br />
+            <h6>Gender: @item.gender</h6>
+            <br />
+            <h6>Contact : @item.contact_no</h6>
+            <br />
+            <h6>DOB: @item.dob</h6>
+            <br />
+            <h6>Address: @item.address</h6>
+            <br />
+        }
+        @foreach (var item in user_edu)
+        {
+            <h4>Education</h4>
+            <h6>Degree: @item.degree</h6>
+            <br />
+            <h6>Institute: @item.institute</h6>
+            <br />
+            <h6>Board: @item.board</h6>
+            <br />
+            <h6>Passing Year : @item.end_date</h6>
+            <br />
+        }
+        @foreach (var item in user_exp)
+        {
+            <h4>Experience</h4>
+            <h6>Company: @item.company</h6>
+            <br />
+            <h6>Title: @item.title</h6>
+            <br />
+            <h6>Start Date: @item.start_date</h6>
+            <br />
+            <h6>End Date : @item.end_date</h6>
+            <br />
+            <h6>Other Skills : @item.other_skills</h6>
+            <br />
+        }
+        @foreach (var item in job_row)
+        {
+            <a href="~/Resumes/@item.doc_path" class="btn btn-warning">View CV</a>
+            <br />
+        }
+        @using (Html.BeginForm("Employee_AddRemarks", "Employee", FormMethod.Post))
+        {
+            <br />
+            <center>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="">Remarks</label>
+                    @Html.DropDownListFor(model => model.remarks, Enumerable.Range(1, 10).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Number --", new { @class = "form-control form-control-lg" })
+                </div>
+                @Html.HiddenFor(model => model.jobapp_id, new { htmlAttributes = new { @class = "form-control" } })
+                
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+
+                <hr class="my-4">
+            </center>
+        }
+    </div>
+</div>

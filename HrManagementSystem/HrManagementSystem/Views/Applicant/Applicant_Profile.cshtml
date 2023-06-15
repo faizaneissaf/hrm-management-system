@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Applicant_Profile";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+<body>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/education.jpg" class="card-img-top" />
+                    <a href="@Url.Action("Applicant_Education","Applicant")" class="btn btn-primary btn-lg btn-block col-lg-5">Education</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/personalp.jpg" class="card-img-top" />
+
+                    <a href="@Url.Action("Applicant_PersonalProfile","Applicant")" class="btn btn-primary btn-lg btn-block col-lg-5">Personal</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/experience.jpg" class="card-img-top" />
+
+                    <a href="@Url.Action("Applicant_Experience","Applicant")" class="btn btn-primary btn-lg btn-block col-lg-5">Experience</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

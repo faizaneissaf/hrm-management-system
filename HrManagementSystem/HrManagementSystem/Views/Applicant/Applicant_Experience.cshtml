@@ -1,0 +1,50 @@
+﻿@model List<HrManagementSystem.Models.Experience>
+
+@{
+    ViewBag.Title = "Applicant_Experience";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+
+<body>
+    <br />
+    <br />
+    <center>
+        <a class="btn btn-primary btn-lg btn-block col-lg-5" href="@Url.Action("Applicant_AddExperience","Applicant")">Add Experience</a>
+    </center>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Company</th>
+                <th scope="col">Title</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Current Work</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Other Skills</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exp in Model)
+            {
+                <tr class="table-info">
+                    <td>@exp.company</td>
+                    <td>@exp.title</td>
+                    <td>@exp.start_date</td>
+                    <td>@exp.current_work</td>
+                    <td>@exp.end_date</td>
+                    <td>@exp.other_skills</td>
+                    <td>
+                        <a href="@Url.Action("Delete_Experience","Applicant", new { id = exp.exp_id })" class="btn btn-danger">Delete</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-info">&nbsp;&nbsp;Edit &nbsp;&nbsp;</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

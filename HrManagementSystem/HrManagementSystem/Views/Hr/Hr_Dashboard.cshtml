@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Hr_Dashboard";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/jobapplications-01.png" class="card-img-top" />
+                    <a href="@Url.Action("Hr_JobApplications","Hr")" class="btn btn-primary btn-lg btn-block col-lg-5">Job Applications</a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/leaveapplications.png" class="card-img-top" />
+
+                    <a href="@Url.Action("Hr_LeaveApplications","Hr")" class="btn btn-primary btn-lg btn-block col-lg-5">Leave Applications</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/attendce.png" class="card-img-top" />
+                    <a href="@Url.Action("Hr_Attendce","Hr")" class="btn btn-primary btn-lg btn-block col-lg-5">Attendce</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/images/jobpost.png" class="card-img-top" />
+                        <a href="@Url.Action("Hr_PostedJobs","Hr")" class="btn btn-primary btn-lg btn-block col-lg-5">Job Post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

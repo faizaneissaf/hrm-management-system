@@ -1,0 +1,21 @@
+﻿@model List < HrManagementSystem.Models.Committe>
+@{
+    ViewBag.Title = "Employee_Committies";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+
+
+<table class="table">
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr class="table-info">
+                <td>Committie : @c.comm_title</td>
+                <td>
+                    <a href="@Url.Action("Employee_AllJObs","Employee", new { id = c.comm_id })" class="btn btn-info">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

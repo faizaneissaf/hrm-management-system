@@ -1,0 +1,29 @@
+﻿@model List<HrManagementSystem.Models.User>
+@{
+    ViewBag.Title = "Guard_AttendceReport";
+    Layout = "~/Views/Shared/_LayoutGuard.cshtml";
+}
+
+<body>
+    <br />
+    <table class="table">
+        <tbody>
+            @foreach (var usr in Model)
+            {
+                <tr class="table-primary">
+                    <td>
+                        <img src="~/Profiles/@usr.image"
+                             style="width: 45px; height: 45px"
+                             class="rounded-circle" />
+                    </td>
+                    <td>@usr.f_name&nbsp;@usr.l_name</td>
+                    <td>@usr.role</td>
+                    <td>
+                        <a href="@Url.Action("Guard_Report","Guard", new { id = usr.u_id })" class="btn btn-info">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

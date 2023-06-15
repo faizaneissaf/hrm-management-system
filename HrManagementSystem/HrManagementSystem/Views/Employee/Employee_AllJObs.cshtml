@@ -1,0 +1,31 @@
+﻿@model List < HrManagementSystem.Models.JobApplication>
+@{
+    ViewBag.Title = "Employee_AllJObs";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+
+
+<table class="table">
+    <tbody>
+        @foreach (var ja in Model)
+        {
+            if (ja != null)
+            {
+                <tr class="table-info">
+                    <td>Title : @ja.title</td>
+                    <td>Applicant : @ja.name</td>
+                    <td>
+                        <a href="@Url.Action("Employee_AddRemarks","Employee", new { jobapp_id = ja.jobapp_id })" class="btn btn-info">View</a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="table-info">
+                    <td>No Job Found.......</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

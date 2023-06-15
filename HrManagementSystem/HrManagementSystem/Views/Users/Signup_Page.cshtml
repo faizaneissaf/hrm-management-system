@@ -1,0 +1,75 @@
+﻿@model HrManagementSystem.Models.User
+
+@{
+    ViewBag.Title = "Signup_Page";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body style="background-color: #508bfc;">
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+
+                            @using (Html.BeginForm("Signup_Page", "Users", FormMethod.Post))
+                            {
+
+                                <h3 class="mb-5">Create Account</h3>
+                                <center>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">First Name</label>
+                                        @Html.EditorFor(model => model.f_name, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Last Name</label>
+                                        @Html.EditorFor(model => model.l_name, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Email</label>
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Contact No</label>
+                                        @Html.EditorFor(model => model.contact_no, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">CNIC</label>
+                                        @Html.EditorFor(model => model.cnic, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Password</label>
+                                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                        Already have an account?&nbsp;&nbsp;@Html.ActionLink("Login here", "Login_Page")
+                                    </p>
+
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Signup</button>
+
+                                </center>
+                                <hr class="my-4">
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

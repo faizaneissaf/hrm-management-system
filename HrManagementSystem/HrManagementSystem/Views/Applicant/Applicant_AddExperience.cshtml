@@ -1,0 +1,62 @@
+﻿@model HrManagementSystem.Models.Experience
+
+@{
+    ViewBag.Title = "Applicant_AddExperience";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+}
+
+<body>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            @using (Html.BeginForm("Applicant_AddExperience", "Applicant", FormMethod.Post))
+                            {
+                                <center>
+
+                                    <h3 class="mb-5">Add Experience</h3>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Company</label>
+                                        @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Title</label>
+                                        @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Start Date</label>
+                                        @Html.EditorFor(model => model.start_date, "date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Current Work</label>
+                                        @Html.EditorFor(model => model.current_work, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">End Date</label>
+                                        @Html.EditorFor(model => model.end_date, "date", new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Other Skills</label>
+                                        @Html.EditorFor(model => model.other_skills, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                    </div>
+
+                                    <button class="btn btn-primary btn-lg btn-block col-lg-5" type="submit">Save</button>
+
+                                    <hr class="my-4">
+                                </center>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

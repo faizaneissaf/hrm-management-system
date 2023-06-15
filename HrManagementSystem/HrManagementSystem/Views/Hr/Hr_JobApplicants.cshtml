@@ -1,0 +1,29 @@
+﻿@model List<HrManagementSystem.Models.JobApplication>
+@{
+    ViewBag.Title = "Hr_JobApplicants";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+    <br />
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Title</th>
+                <th scope="col">Applicant Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jobapp in Model)
+            {
+                <tr class="table-info">
+                    <td>@jobapp.title</td>
+                    <td>@jobapp.name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

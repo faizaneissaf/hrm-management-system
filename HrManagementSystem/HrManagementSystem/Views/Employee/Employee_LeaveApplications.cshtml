@@ -1,0 +1,119 @@
+﻿@model List < HrManagementSystem.Models.LeaveApplication>
+@{
+    ViewBag.Title = "Employee_LeaveApplications";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+<style>
+    .first-table tbody tr:not(:first-child) {
+        display: none;
+    }
+</style>
+<body>
+    <br />
+    <table class="table first-table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Total Sick Leaves Left</th>
+                <th scope="col">Total Casual Leaves Left</th>
+                <th scope="col">Total Annual Leaves Left</th>
+                <th scope="col">Total Earned Leaves Left</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lc in Model)
+            {
+                ///calculating leaves
+                HrManagementSystem.Models.BiitHrmDBEntities3 db = new HrManagementSystem.Models.BiitHrmDBEntities3();
+                var userApplications = db.LeaveApplications.Where(x => x.u_id == lc.u_id).ToList();
+                var totalSick = userApplications.Where(x => x.leave_type == "Sick" && x.status == "approved");
+                var totalCasual = userApplications.Where(x => x.leave_type == "Casual" && x.status == "approved");
+                var totalEarn = userApplications.Where(x => x.leave_type == "Earn" && x.status == "approved");
+                var totalAnnual = userApplications.Where(x => x.leave_type == "Annual" && x.status == "approved");
+                var leavesLeftSick = 0;
+                var leavesLeftCasual = 0;
+                var leavesLeftEarn = 0;
+                var leavesLeftAnnual = 0;
+                if (totalSick != null)
+                {
+                    leavesLeftSick = 10 - (totalSick.Count());
+                }
+                else
+                {
+                    leavesLeftSick = 10 - 0;
+                }
+
+                if (totalCasual != null)
+                {
+                    leavesLeftCasual = 10 - (totalCasual.Count());
+                }
+                else
+                {
+                    leavesLeftCasual = 10 - 0;
+                }
+
+                if (totalAnnual != null)
+                {
+                    leavesLeftAnnual = 10 - (totalAnnual.Count());
+                }
+                else
+                {
+                    leavesLeftAnnual = 10 - 0;
+                }
+
+
+                if (totalEarn != null)
+                {
+                    leavesLeftEarn = 10 - (totalEarn.Count());
+                }
+                else
+                {
+                    leavesLeftEarn = 10 - 0;
+                }
+                ///
+                <tr class="table-primary">
+                    <td>@leavesLeftSick</td>
+                    <td>@leavesLeftCasual</td>
+                    <td>@leavesLeftAnnual</td>
+                    <td>@leavesLeftEarn</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Leave Type</th>
+                <th scope="col">Start Date </th>
+                <th scope="col">End Date </th>
+                <th scope="col">Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var la in Model)
+            {
+                <tr class="table-primary">
+                    <td>@la.leave_type</td>
+                    <td>@la.start_date</td>
+                    <td>@la.end_date</td>
+                    @if (la.status == "pending")
+                    {
+                        <td class="bg-warning">@la.status</td>
+                    }
+                    else if (la.status == "reject")
+                    {
+                        <td class="bg-danger">@la.status</td>
+                    }
+                    else
+                    {
+                        <td class="bg-info">@la.status</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+

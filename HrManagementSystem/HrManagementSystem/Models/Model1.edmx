@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BiitHrmDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="date" Type="varchar" MaxLength="50" />
+          <Property Name="checkin" Type="varchar" MaxLength="50" />
+          <Property Name="checkout" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Committe">
+          <Key>
+            <PropertyRef Name="comm_id" />
+          </Key>
+          <Property Name="comm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comm_title" Type="varchar" MaxLength="50" />
+          <Property Name="comm_head" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CommitteMembers">
+          <Key>
+            <PropertyRef Name="comm_m_id" />
+          </Key>
+          <Property Name="comm_m_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comm_id" Type="int" />
+          <Property Name="u_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="edu_id" />
+          </Key>
+          <Property Name="edu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="degree" Type="varchar" MaxLength="50" />
+          <Property Name="institute" Type="varchar" MaxLength="50" />
+          <Property Name="board" Type="varchar" MaxLength="50" />
+          <Property Name="start_date" Type="varchar" MaxLength="50" />
+          <Property Name="end_date" Type="varchar" MaxLength="50" />
+          <Property Name="has_added_edu" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="exp_id" />
+          </Key>
+          <Property Name="exp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="company" Type="varchar" MaxLength="50" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="start_date" Type="varchar" MaxLength="50" />
+          <Property Name="current_work" Type="varchar" MaxLength="50" />
+          <Property Name="end_date" Type="varchar" MaxLength="50" />
+          <Property Name="other_skills" Type="varchar" MaxLength="50" />
+          <Property Name="has_exp" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="qualification" Type="varchar" MaxLength="50" />
+          <Property Name="salary" Type="varchar" MaxLength="50" />
+          <Property Name="experience" Type="varchar" MaxLength="50" />
+          <Property Name="last_date_to_apply" Type="varchar" MaxLength="50" />
+          <Property Name="location" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="vaccencies" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobApplication">
+          <Key>
+            <PropertyRef Name="jobapp_id" />
+          </Key>
+          <Property Name="jobapp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="job_id" Type="int" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="short_list" Type="varchar" MaxLength="50" />
+          <Property Name="doc_path" Type="varchar" MaxLength="50" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobApplicationsCommitte">
+          <Key>
+            <PropertyRef Name="job_app_cmt_id" />
+          </Key>
+          <Property Name="job_app_cmt_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobapp_id" Type="int" />
+          <Property Name="comm_id" Type="int" />
+        </EntityType>
+        <EntityType Name="LeaveApplication">
+          <Key>
+            <PropertyRef Name="leaveapp_id" />
+          </Key>
+          <Property Name="leaveapp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="int" />
+          <Property Name="leave_type" Type="varchar" MaxLength="50" />
+          <Property Name="start_date" Type="varchar" MaxLength="50" />
+          <Property Name="end_date" Type="varchar" MaxLength="50" />
+          <Property Name="reason" Type="varchar(max)" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RemarksFromCommittie">
+          <Key>
+            <PropertyRef Name="remarks_id" />
+          </Key>
+          <Property Name="remarks_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_mem_id" Type="int" />
+          <Property Name="remarks" Type="int" />
+          <Property Name="jobapp_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Shortlist">
+          <Key>
+            <PropertyRef Name="shortlist_id" />
+          </Key>
+          <Property Name="shortlist_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobapp_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="50" />
+          <Property Name="l_name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="contact_no" Type="varchar" MaxLength="50" />
+          <Property Name="cnic" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="BiitHrmDBModelStoreContainer">
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Committe" EntityType="Self.Committe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommitteMembers" EntityType="Self.CommitteMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experience" EntityType="Self.Experience" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobApplication" EntityType="Self.JobApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobApplicationsCommitte" EntityType="Self.JobApplicationsCommitte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaveApplication" EntityType="Self.LeaveApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RemarksFromCommittie" EntityType="Self.RemarksFromCommittie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shortlist" EntityType="Self.Shortlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BiitHrmDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="checkin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="checkout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Committe">
+          <Key>
+            <PropertyRef Name="comm_id" />
+          </Key>
+          <Property Name="comm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comm_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comm_head" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CommitteMember">
+          <Key>
+            <PropertyRef Name="comm_m_id" />
+          </Key>
+          <Property Name="comm_m_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comm_id" Type="Int32" />
+          <Property Name="u_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="edu_id" />
+          </Key>
+          <Property Name="edu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="Int32" />
+          <Property Name="degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="institute" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="board" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="has_added_edu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Experience">
+          <Key>
+            <PropertyRef Name="exp_id" />
+          </Key>
+          <Property Name="exp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="Int32" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="current_work" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="other_skills" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="has_exp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_date_to_apply" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vaccencies" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobApplication">
+          <Key>
+            <PropertyRef Name="jobapp_id" />
+          </Key>
+          <Property Name="jobapp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="u_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="short_list" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="doc_path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobApplicationsCommitte">
+          <Key>
+            <PropertyRef Name="job_app_cmt_id" />
+          </Key>
+          <Property Name="job_app_cmt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobapp_id" Type="Int32" />
+          <Property Name="comm_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LeaveApplication">
+          <Key>
+            <PropertyRef Name="leaveapp_id" />
+          </Key>
+          <Property Name="leaveapp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="Int32" />
+          <Property Name="leave_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="end_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RemarksFromCommittie">
+          <Key>
+            <PropertyRef Name="remarks_id" />
+          </Key>
+          <Property Name="remarks_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_mem_id" Type="Int32" />
+          <Property Name="remarks" Type="Int32" />
+          <Property Name="jobapp_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Shortlist">
+          <Key>
+            <PropertyRef Name="shortlist_id" />
+          </Key>
+          <Property Name="shortlist_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobapp_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contact_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cnic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BiitHrmDBEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <EntitySet Name="Committes" EntityType="Self.Committe" />
+          <EntitySet Name="CommitteMembers" EntityType="Self.CommitteMember" />
+          <EntitySet Name="Educations" EntityType="Self.Education" />
+          <EntitySet Name="Experiences" EntityType="Self.Experience" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="JobApplications" EntityType="Self.JobApplication" />
+          <EntitySet Name="JobApplicationsCommittes" EntityType="Self.JobApplicationsCommitte" />
+          <EntitySet Name="LeaveApplications" EntityType="Self.LeaveApplication" />
+          <EntitySet Name="RemarksFromCommitties" EntityType="Self.RemarksFromCommittie" />
+          <EntitySet Name="Shortlists" EntityType="Self.Shortlist" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BiitHrmDBModelStoreContainer" CdmEntityContainer="BiitHrmDBEntities4">
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="att_id" ColumnName="att_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="checkin" ColumnName="checkin" />
+                <ScalarProperty Name="checkout" ColumnName="checkout" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Committes">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Committe">
+              <MappingFragment StoreEntitySet="Committe">
+                <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+                <ScalarProperty Name="comm_title" ColumnName="comm_title" />
+                <ScalarProperty Name="comm_head" ColumnName="comm_head" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommitteMembers">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.CommitteMember">
+              <MappingFragment StoreEntitySet="CommitteMembers">
+                <ScalarProperty Name="comm_m_id" ColumnName="comm_m_id" />
+                <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="edu_id" ColumnName="edu_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="institute" ColumnName="institute" />
+                <ScalarProperty Name="board" ColumnName="board" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="has_added_edu" ColumnName="has_added_edu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Experience">
+              <MappingFragment StoreEntitySet="Experience">
+                <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="current_work" ColumnName="current_work" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="other_skills" ColumnName="other_skills" />
+                <ScalarProperty Name="has_exp" ColumnName="has_exp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="last_date_to_apply" ColumnName="last_date_to_apply" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="vaccencies" ColumnName="vaccencies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobApplications">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.JobApplication">
+              <MappingFragment StoreEntitySet="JobApplication">
+                <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="short_list" ColumnName="short_list" />
+                <ScalarProperty Name="doc_path" ColumnName="doc_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobApplicationsCommittes">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.JobApplicationsCommitte">
+              <MappingFragment StoreEntitySet="JobApplicationsCommitte">
+                <ScalarProperty Name="job_app_cmt_id" ColumnName="job_app_cmt_id" />
+                <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+                <ScalarProperty Name="comm_id" ColumnName="comm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveApplications">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.LeaveApplication">
+              <MappingFragment StoreEntitySet="LeaveApplication">
+                <ScalarProperty Name="leaveapp_id" ColumnName="leaveapp_id" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="leave_type" ColumnName="leave_type" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RemarksFromCommitties">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.RemarksFromCommittie">
+              <MappingFragment StoreEntitySet="RemarksFromCommittie">
+                <ScalarProperty Name="remarks_id" ColumnName="remarks_id" />
+                <ScalarProperty Name="c_mem_id" ColumnName="c_mem_id" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shortlists">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.Shortlist">
+              <MappingFragment StoreEntitySet="Shortlist">
+                <ScalarProperty Name="shortlist_id" ColumnName="shortlist_id" />
+                <ScalarProperty Name="jobapp_id" ColumnName="jobapp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BiitHrmDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contact_no" ColumnName="contact_no" />
+                <ScalarProperty Name="cnic" ColumnName="cnic" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

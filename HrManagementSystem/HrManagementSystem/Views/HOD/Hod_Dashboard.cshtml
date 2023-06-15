@@ -1,0 +1,39 @@
+﻿@model List<HrManagementSystem.Models.Job>
+@{
+    ViewBag.Title = "Hod_Dashboard";
+    Layout = "~/Views/Shared/_LayoutHod.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr class="table-success">
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ja in Model)
+        {
+            if (ja != null)
+            {
+                <tr class="table-info">
+                    <td>@ja.title</td>
+                    <td>@ja.location</td>
+                    <td>@ja.salary</td>
+                    <td>
+                        <a href="@Url.Action("Hod_JobApplicants","HOD", new { j_id = ja.job_id })" class="btn btn-info">View</a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="table-info">
+                    <td>No Job Found.......</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

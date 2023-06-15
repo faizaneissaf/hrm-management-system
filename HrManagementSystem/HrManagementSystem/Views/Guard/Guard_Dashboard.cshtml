@@ -1,0 +1,42 @@
+﻿@model List<HrManagementSystem.Models.User>
+@{
+    ViewBag.Title = "Guard_Dashboard";
+    Layout = "~/Views/Shared/_LayoutGuard.cshtml";
+}
+
+<body>
+    <br />
+    @using (Html.BeginForm("Guard_Dashboard", "Guard", FormMethod.Get))
+    {
+        <div class="input-group">
+            @Html.TextBox("s_query", null, new { @class = "form-control", @col = "8" })
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    }
+    <br />
+    <br />
+    <table class="table">
+        <tbody>
+            @foreach (var usr in Model)
+            {
+                HrManagementSystem.Models.BiitHrmDBEntities4 db = new HrManagementSystem.Models.BiitHrmDBEntities4();
+                bool isAttended = db.Attendances.Any(a => a.u_id == usr.u_id && a.checkout == "false");
+                <tr class="table-primary">
+                    <td>
+
+                        <div class="card">
+                            <a href="@Url.Action("Guard_CheckStatus","Guard", new { id = usr.u_id })" class="btn @(isAttended ? "btn-danger" : "btn-warning")">
+                                <img src="~/Profiles/@usr.image"
+                                     style="width: 100px; height: 100px"
+                                     class="card-img-top" />
+                                <h4>@usr.f_name&nbsp;@usr.l_name</h4>
+                            </a>
+
+                        </div>
+                    </td>
+                    @*<td>@usr.f_name&nbsp;@usr.l_name</td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

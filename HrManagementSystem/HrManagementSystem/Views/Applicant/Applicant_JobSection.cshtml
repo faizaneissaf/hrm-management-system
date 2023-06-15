@@ -1,0 +1,66 @@
+﻿@model List<HrManagementSystem.Models.Job>
+
+
+@{
+    ViewBag.Title = "Applicant_JobSection";
+    Layout = "~/Views/Shared/_LayoutApplicant.cshtml";
+
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script>alert('@ViewBag.ErrorMessage');</script>
+}
+<body>
+    <br />
+    <br />
+    @using (Html.BeginForm("Applicant_JobSection", "Applicant", FormMethod.Get))
+    {
+        <div class="input-group">
+            @Html.TextBox("query", null, new { @class = "form-control", @col = "8" })
+            <input type="submit" value="Search" class="btn btn-primary" />
+            &nbsp;&nbsp;&nbsp;<a href="@Url.Action("Applicant_JobSection","Applicant")" class="btn btn-primary">Best Match</a>
+        </div>
+    }
+
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Title</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Experience</th>
+                <th scope="col">Last Date</th>
+                <th scope="col">Location</th>
+                <th scope="col">Total Vaccancies</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr class="table-info">
+                    <td colspan="8" style="color:red">No Match Found!</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var job in Model)
+                {
+                    <tr class="table-info">
+                        <td>@job.title</td>
+                        <td>@job.qualification</td>
+                        <td>@job.salary</td>
+                        <td>@job.experience</td>
+                        <td>@job.last_date_to_apply</td>
+                        <td>@job.location</td>
+                        <td>@job.vaccencies</td>
+                        <td>
+                            <a href="@Url.Action("Applicant_ApplyJob","Applicant", new { id = job.job_id })" class="btn btn-primary">Apply</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>

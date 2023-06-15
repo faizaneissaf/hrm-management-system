@@ -1,0 +1,32 @@
+﻿@model List<HrManagementSystem.Models.Attendance>
+@{
+    ViewBag.Title = "Employee_AttendceReport";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+
+<body>
+    <br />
+    <table class="table">
+        <thead>
+            <tr class="table-success">
+                <th scope="col">Date</th>
+                <th scope="col">Check In</th>
+                <th scope="col">Check Out</th>
+                <th scope="col">Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model)
+            {
+                <tr class="table-info">
+                    <td>@report.date</td>
+                    <td>@report.checkin</td>
+                    <td>@report.checkout</td>
+                    <td>@report.status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

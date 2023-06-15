@@ -1,0 +1,28 @@
+﻿@model List<HrManagementSystem.Models.Committe>
+@{
+    ViewBag.Title = "Hr_Commettie";
+    Layout = "~/Views/Shared/_LayoutHr.cshtml";
+}
+
+<body>
+    <br />
+    <br />
+    <center>
+        <a class="btn btn-primary btn-lg btn-block col-lg-5" href="@Url.Action("Hr_ShowCommettieHead","Hr")">Add Commettie</a>
+    </center>
+    <br />
+    <table class="table">
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr class="table-info">
+                    <td>Commettie : @c.comm_title</td>
+                    <td>
+                        <a href="@Url.Action("Hr_CommettieMembers","Hr", new { id = c.comm_id })" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
